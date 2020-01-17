@@ -40,24 +40,24 @@ fun main() {
 			IssueController.add(ctx)
 		}
 
-		get("/users") { ctx ->
-			UserController.getAll(ctx)
-
-
-		}
-
-//		get("/users/:user-id") { ctx ->
-//			ctx.json(userDao.findById(ctx.pathParam("user-id").toInt())!!)
+//		get("/users") { ctx ->
+//			UserController.getAll(ctx)
+//
+//
 //		}
+
+		get("/issues/:id/events") { ctx ->
+			IssueController.getEvents(ctx)
+		}
 //
 //		get("/users/email/:email") { ctx ->
 //			ctx.json(userDao.findByEmail(ctx.pathParam("email"))!!)
 //		}
 //
-		post("/users") { ctx ->
-			UserController.add(ctx)
-			//ctx.status(201)
-		}
+//		post("/users") { ctx ->
+//			UserController.add(ctx)
+//			//ctx.status(201)
+//		}
 //
 //		patch("/users/:user-id") { ctx ->
 //			val user = ctx.body<User>()

@@ -1,7 +1,6 @@
 package com.githubwebhook.model
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import com.fasterxml.jackson.annotation.JsonRootName
 import org.jetbrains.exposed.sql.Table
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -29,7 +28,9 @@ object Events : Table("events") {
     val event = varchar("event",255).nullable()
     val lock_reason = varchar("lock_reason",255).nullable()
     val node_id = varchar("node_id",255).nullable()
-    val actor_id = long("actor_id")
+    val actor_id = optReference ("actor_id", Actors.id)
+    val assignee_id = optReference("assignee_id", Assignees.id)
+    val assigner_id = optReference("assigner_id", Assigners.id)
 
 
 

@@ -29,7 +29,7 @@ data class Assignee(
 
 )
 object Assignees : Table("assignees") {
-    val id = Events.long("id").primaryKey()
+    val id = long("id").primaryKey()
     val login = varchar("login", 255).nullable()
     val node_id = varchar("node_id", 255).nullable()
     val avatar_url = varchar("avatar_url", 255).nullable()
@@ -46,6 +46,6 @@ object Assignees : Table("assignees") {
     val events_url = varchar("events_url", 255).nullable()
     val received_events_url = varchar("received_events_url", 255).nullable()
     val type = varchar("type", 255).nullable()
-    val site_admin = varchar("site_admin", 255).nullable()
+    val site_admin = bool("site_admin").nullable()
 
 }

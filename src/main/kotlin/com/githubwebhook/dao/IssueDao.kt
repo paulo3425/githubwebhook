@@ -1,6 +1,7 @@
 package com.githubwebhook.dao
 
 
+import com.githubwebhook.model.Actor
 import com.githubwebhook.model.Issue
 import com.githubwebhook.model.Issues
 import org.jetbrains.exposed.sql.insert
@@ -18,4 +19,18 @@ class IssueDao {
         }
 
     }
+
+    fun get(id: Long): List<Issue> {
+
+        return Issues.select {Issues.id eq id}.map {
+            Issue(
+                    it[Issues.id],
+                    it[Issues.events_url]
+
+            )
+
+        }
+
+    }
+
 }
