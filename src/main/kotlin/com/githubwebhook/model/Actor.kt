@@ -29,7 +29,7 @@ data class Actor(
 )
 
 object Actors : Table("actors") {
-    val id = Events.long("id").primaryKey()
+    val id = long("id").primaryKey()
     val login = varchar("login", 255).nullable()
     val node_id = varchar("node_id", 255).nullable()
     val avatar_url = varchar("avatar_url", 255).nullable()
