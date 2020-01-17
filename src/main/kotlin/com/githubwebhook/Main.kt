@@ -1,18 +1,17 @@
 package com.githubwebhook
 
-import com.githubwebhook.dao.UserDao
-import com.githubwebhook.model.User
-import com.githubwebhook.service.UserService
+import com.githubwebhook.controller.IssueController
+import com.githubwebhook.controller.UserController
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.javalin.Javalin
-import io.javalin.apibuilder.ApiBuilder.delete
 import io.javalin.apibuilder.ApiBuilder.get
-import io.javalin.apibuilder.ApiBuilder.patch
 import io.javalin.apibuilder.ApiBuilder.post
 import org.jetbrains.exposed.sql.Database
 
 fun main() {
+
+
 
 	fun initDB() {
 		val config = HikariConfig("/hikari.properties")
@@ -21,19 +20,30 @@ fun main() {
 		Database.connect(ds)
 	}
 
-	val userService = UserService()
+	//val userController = UserController
+
 
 	val app = Javalin.create().apply {
 		initDB()
 		exception(Exception::class.java) { e, ctx -> e.printStackTrace() }
 		error(404) { ctx -> ctx.json("not found") }
-	}.start(7000)
+
+	}.start(4567)
+
+
 
 	app.routes {
 
 
+		post("/payload") { ctx ->
+			//print(ctx.body())
+			IssueController.add(ctx)
+		}
+
 		get("/users") { ctx ->
-			ctx.json(userService.getAll())
+			UserController.getAll(ctx)
+
+
 		}
 
 //		get("/users/:user-id") { ctx ->
@@ -44,11 +54,10 @@ fun main() {
 //			ctx.json(userDao.findByEmail(ctx.pathParam("email"))!!)
 //		}
 //
-//		post("/users") { ctx ->
-//			val user = ctx.body<User>()
-//			userDao.save(name = user.name, email = user.email)
-//			ctx.status(201)
-//		}
+		post("/users") { ctx ->
+			UserController.add(ctx)
+			//ctx.status(201)
+		}
 //
 //		patch("/users/:user-id") { ctx ->
 //			val user = ctx.body<User>()
