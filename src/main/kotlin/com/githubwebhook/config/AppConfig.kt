@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.javalin.Javalin
 import io.javalin.plugin.json.JavalinJackson
+import io.javalin.plugin.openapi.annotations.ContentType
 import org.koin.core.KoinComponent
 import org.koin.core.context.startKoin
 
@@ -19,6 +20,7 @@ class AppConfig : KoinComponent {
 
         return Javalin.create()
                 .also { app ->
+                    app.config.defaultContentType = ContentType.JSON
                     this.configureMapper()
                     router.register(app)
                 }
