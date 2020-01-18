@@ -7,50 +7,47 @@ import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
 import kotlin.math.absoluteValue
 
-class IssueService {
+class IssueService(private val issueDao: IssueDao, private val actorDao: ActorDao, private val eventDao: EventDao, private val assignerDao: AssignerDao, private val assigneeDao: AssigneeDao) {
 
     fun add(model: Issue) {
 
-        transaction {
-
-            val issue = IssueDao().get(model.id)
+            val issue = issueDao.get(model.id)
 
             if (issue.isNullOrEmpty())
-                IssueDao().add(model)
+                issueDao.add(model)
 
             for (item in model.events) {
 
-                val actors: List<Actor> = ActorDao().get(item.actor?.id ?: 0)
+                val actors: List<Actor> = actorDao.get(item.actor?.id ?: 0)
 
                 if (actors.isNullOrEmpty())
-                    item.actor?.let { ActorDao().add(it) }
+                    item.actor?.let { actorDao.add(it) }
 
-                val assignees = AssigneeDao().get(item.assignee?.id ?: 0)
+                val assignees = assigneeDao.get(item.assignee?.id ?: 0)
 
                 if (assignees.isNullOrEmpty())
-                    item.assignee?.let { AssigneeDao().add(it) }
+                    item.assignee?.let { assigneeDao.add(it) }
 
-                val assigners = AssignerDao().get(item.assigner?.id ?: 0)
+                val assigners = assignerDao.get(item.assigner?.id ?: 0)
 
                 if (assigners.isNullOrEmpty())
-                    item.assigner?.let { AssignerDao().add(it) }
+                    item.assigner?.let { assignerDao.add(it) }
 
-                var event = EventDao().get(item.id)
+                var event = eventDao.get(item.id)
 
                 if (event.isNullOrEmpty())
-                    EventDao().add(item, model.id)
+                    eventDao.add(item, model.id)
 
             }
-        }
+
 
     }
 
     fun getEvents(id: Long): List<Event> {
         var events: List<Event> = arrayListOf()
 
-        transaction {
-            events = EventDao().getByIssueId(id)
-        }
+            events = eventDao.getByIssueId(id)
+
 
         return events
     }
