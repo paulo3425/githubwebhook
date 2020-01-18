@@ -2,6 +2,7 @@ package com.githubwebhook.controller
 
 
 import com.fasterxml.jackson.module.kotlin.readValue
+import com.githubwebhook.exception.Conflict
 import com.githubwebhook.model.Event
 import com.githubwebhook.model.Payload
 import com.githubwebhook.service.IssueService
@@ -24,7 +25,11 @@ class IssueController(private val issueService: IssueService) {
                 issueService.add(payload.issue)
 
             ctx.status(201)
-        } catch (e: Exception) {
+        }
+        catch (e: Conflict) {
+            ctx.status(409)
+        }
+        catch (e: Exception) {
             ctx.status(500)
         }
 
