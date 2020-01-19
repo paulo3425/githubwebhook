@@ -22,6 +22,7 @@ services:
       - dataSource.portNumber=5432
       - dataSource.serverName=postgres
       - liquibase.change-log=classpath:db/liquibase-changelog.xml
+      - server.port=8080
     expose:
       - "8080"
     ports:

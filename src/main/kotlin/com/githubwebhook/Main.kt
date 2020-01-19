@@ -11,5 +11,5 @@ fun main() {
         modules(ModulesConfig.allModules)
     }
 
-    AppConfig().setup().start(8080)
+    AppConfig().setup().start(System.getenv("server.port").toInt())
 }
