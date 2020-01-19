@@ -59,10 +59,6 @@ Get             /issues/:id/events          Replace :id for your issue id
 Post            /payload
 ```
 
-## Observations
-
-In case you need to change the server's port you have to access the Dockerfile and docker-compose.yml to modify the port
-
 
 ## Built With
 
@@ -79,7 +75,7 @@ In case you need to change the server's port you have to access the Dockerfile a
 
 ## Author
 
-* **Paulo Augusto**  - *Initial work* - [githubwebhook](https://paulo_javadevloper@bitbucket.org/paulo_javadevloper/githubwebhook.git)
+* **Paulo Augusto**  - *Initial work* - [githubwebhook](https://github.com/paulo3425/githubwebhook)
 * **Any question**  -  [E-mail](paulo-3425@hotmail.com)
 
 
