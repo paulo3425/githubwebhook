@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="01" author="paulo">
+
+        <createTable tableName="assignees">
+            <column name="id" type="bigint">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="login" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="node_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="avatar_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="gravatar_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="html_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="followers_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="following_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="gists_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="starred_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="subscriptions_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="organizations_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="repos_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="events_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="received_events_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="site_admin" type="bool">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+
+
+
+    </changeSet>
+</databaseChangeLog>

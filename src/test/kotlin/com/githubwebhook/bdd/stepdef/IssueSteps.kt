@@ -1,12 +1,10 @@
-package com.gitgubwebhook.bdd.stepdef
+package com.githubwebhook.bdd.stepdef
 
-import com.githubwebhook.model.Issue
 import cucumber.api.java.en.Given
 import cucumber.api.java.en.Then
 import cucumber.api.java.en.When
 import io.restassured.RestAssured.given
 import io.restassured.http.ContentType
-import io.restassured.path.json.config.JsonPathConfig
 import io.restassured.response.Response
 
 

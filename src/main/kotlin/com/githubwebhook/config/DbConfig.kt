@@ -4,11 +4,18 @@ import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import javax.sql.DataSource
 
-class DbConfig(dbConfig:HikariConfig) {
+class DbConfig() {
     private val dataSource: DataSource
 
     init {
-        dataSource = HikariDataSource(dbConfig)
+        var config: HikariConfig = HikariConfig()
+
+        config.jdbcUrl =System.getenv("dataSource.url")
+        config.username =System.getenv("dataSource.user")
+        config.password =  System.getenv("dataSource.password")
+        config.driverClassName =  System.getenv("dataSource.dataSourceClassName")
+
+        dataSource = HikariDataSource(config)
     }
 
     fun getDataSource(): DataSource {

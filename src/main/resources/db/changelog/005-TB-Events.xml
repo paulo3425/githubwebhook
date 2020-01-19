@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="01" author="paulo">
+
+        <createTable tableName="events">
+            <column name="id" type="bigint">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+
+            <column name="issue_id" type="bigint">
+            </column>
+
+            <column name="actor_id" type="bigint">
+            </column>
+
+            <column name="assignee_id" type="bigint">
+            </column>
+
+            <column name="assigner_id" type="bigint">
+            </column>
+
+            <column name="commit_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="commit_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="created_at" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="event" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="lock_reason" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="node_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="events" baseColumnNames="issue_id"
+                                 constraintName="events_issues_fk"
+                                 referencedTableName="issues" referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="events" baseColumnNames="actor_id"
+                                 constraintName="events_actors_fk"
+                                 referencedTableName="actors" referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="events" baseColumnNames="assignee_id"
+                                 constraintName="events_assignees_fk"
+                                 referencedTableName="assignees" referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="events" baseColumnNames="assigner_id"
+                                 constraintName="events_assigners_fk"
+                                 referencedTableName="assigners" referencedColumnNames="id"/>
+
+    </changeSet>
+</databaseChangeLog>

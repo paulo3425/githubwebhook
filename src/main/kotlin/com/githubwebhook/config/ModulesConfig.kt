@@ -22,7 +22,8 @@ object ModulesConfig {
     private val configModule = module {
         single { AppConfig() }
         single {
-            DbConfig(HikariConfig("/hikari.properties")).getDataSource()
+
+            DbConfig().getDataSource()
         }
         single { RouterConfig(get()) }
     }
