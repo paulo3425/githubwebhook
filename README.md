@@ -46,7 +46,7 @@ Project's architecture
 ```
 Routers configuration, Database configuration and Application configuration you can find at com.githubwebhook.config folder
 In case you need to change database configuration you are going to find hiraki.properties and its property inside DbConfig.class
-In case you need to change server's you have to change inside  Main.kt
+In case you need to change server's port you have to change inside  Main.kt
 
 Why do you have to do these configuration to get a developing environment ?
 Because developing profile has not created yet.
