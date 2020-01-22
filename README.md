@@ -45,6 +45,9 @@ Execute the command bellow to package. The fisrt time is going to break dont wor
 
 Execute the command bellow to get the test environment up. Make sure that two services are up after run the bellow command.
         docker-compose up --build -d
+        
+Execute the command bellow to create all tables:
+         mvn package -Dmaven.test.skip=true 
 
 Finally execute the command bellow to run integration test:
          mvn test
