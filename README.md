@@ -39,7 +39,7 @@ How to run the automated tests for this system
 Execute the command bellow to package. The fisrt time is going to break dont worry.
         mvn package -Dmaven.test.skip=true
 
-Execute the command bellow to get the test environment up. Make sure that two service is up after run the bellow command.
+Execute the command bellow to get the test environment up. Make sure that two services are up after run the bellow command.
         docker-compose up --build -d
 
 Finally execute the command bellow to run integration test:
