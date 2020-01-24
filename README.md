@@ -22,13 +22,13 @@ A step by step series of examples that tell you how to get a development env run
 
 
 ```
-Execute the command bellow to package. The fisrt time is going to break dont worry.
+Execute the command below to package. The fisrt time is going to break dont worry.
         mvn package -Dmaven.test.skip=true
         
 Access project's folder by terminal and execute the following instructions to get app up:
         docker-compose up --build -d
         
-Execute the command bellow to create all tables:
+Execute the command below to create all tables:
          mvn package -Dmaven.test.skip=true 
      
 ```
@@ -40,16 +40,16 @@ How to run the automated tests for this system
 
 
 ```
-Execute the command bellow to package. The fisrt time is going to break dont worry.
+Execute the command below to package. The fisrt time is going to break dont worry.
         mvn package -Dmaven.test.skip=true
 
-Execute the command bellow to get the test environment up. Make sure that two services are up after run the bellow command.
+Execute the command below to get the test environment up. Make sure that two services are up after run the below command.
         docker-compose up --build -d
         
-Execute the command bellow to create all tables:
+Execute the command below to create all tables:
          mvn package -Dmaven.test.skip=true 
 
-Finally execute the command bellow to run integration test:
+Finally execute the command below to run integration test:
          mvn test
 ```
 
